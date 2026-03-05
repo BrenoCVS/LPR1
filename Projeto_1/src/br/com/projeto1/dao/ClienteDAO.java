@@ -57,6 +57,37 @@ public class ClienteDAO {
            ConexaoDAO.CloseDB();
        }
    }    
+   
+   
+   public ResultSet consultarCliente(int opc, ClienteDTO clienteDTO){
+       try{
+           ConexaoDAO.ConectDB();
+           
+           stmt = ConexaoDAO.con.createStatement();
+           
+           String comando = "";
+           
+           switch (opc) {
+               case 1:
+                    comando ="SELECT * FROM cliente "
+                            + "WHERE nome_cli like '" + clienteDTO.getNome_cli() + "%'"
+                            + "ORDER BY nome";
+               break;
+               case 2:
+                    comando = "SELECT * FROM cliente"
+                            + "WHERE id_cli = " + clienteDTO.getId_cli() + "";
+               break;
+               case 3:
+                    comando = "SELECT id_cli, nome_cli"
+                            + "FROM cliente";
+           }
+           rs = stmt.executeQuery(comando.toUpperCase());
+           return rs;
+           
+        } catch(Exception e){
+            System.out.println("Erro ao realizar a pesquisa do cliente na base de dados."
+                + "\nErro: " + e.getMessage());
+            return rs;
+        }
+   }
 }
-
-
