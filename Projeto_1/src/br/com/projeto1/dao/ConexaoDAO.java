@@ -34,7 +34,7 @@ public class ConexaoDAO {
 
             String dsn = "projeto_1"; // nome do banco de dados (igual ao criado no Postgres)
             String user = "postgres"; // nome do usuário utilizado para se conectar
-            String senha = ""; // senha do usuário acima informado
+            String senha = "postdba"; // senha do usuário acima informado
             String porta = "5432"; // porta para acessar o serviço do banco
 
             DriverManager.registerDriver(new org.postgresql.Driver());
